@@ -1,0 +1,26 @@
+{
+  "name": "joejob",
+  "version": "0.5.0",
+  "description": "Online Fashion Network",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:server": "cd server && tsc",
+    "test": "echo 'test not yet ready'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hwangc/joejob.git"
+  },
+  "keywords": [
+    "fashion",
+    "social",
+    "fun"
+  ],
+  "author": "HwangC <hwangc@hwangc.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hwangc/joejob/issues"
+  },
+  "homepage": "https://github.com/hwangc/joejob#readme"
+}

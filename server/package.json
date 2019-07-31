@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "0.5.0",
+  "description": "Server for Joejob",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
+    "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "test": "echo 'not yet ready'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hwangc/joejob.git"
+  },
+  "author": "HwangC <hwangc@hwangc.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hwangc/joejob/issues"
+  },
+  "homepage": "https://github.com/hwangc/joejob#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.0",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  }
+}
