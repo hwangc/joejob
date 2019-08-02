@@ -31,12 +31,13 @@ header nav {
   margin: 0 auto;
   text-align: center;
   display: inline-block;
-  width: calc(100% - 20.5%);
+  width: calc(100% - 21%);
   vertical-align: top;
   text-transform: capitalize;
 }
 
-header nav ul {
+
+ul {
   width: 343px;
   margin: 0 auto;
   overflow: hidden;
