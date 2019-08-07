@@ -4,8 +4,6 @@
   "description": "Online Fashion Network",
   "main": "server/dist/index.js",
   "scripts": {
-    "tsc": "tsc",
-    "tsc:server": "cd server && tsc",
     "test": "echo 'test not yet ready'"
   },
   "repository": {
