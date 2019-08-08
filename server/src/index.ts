@@ -1,15 +1,22 @@
 import express from "express";
-import registerRoutes from './routes'
-import configApp from './config/express'
-import * as config from './config'
+import passport from "passport";
+import configApp from "./config/app";
+import configAuth from "./config/auth";
+import * as configEnv from "./config/env";
+import configRoutes from "./routes";
 
 const app: express.Application = express();
+const auth: passport.PassportStatic = passport;
 
 // Config App
-configApp(app)
-// Register routes
-registerRoutes(app)
+configApp(app);
+// Config auth
+configAuth(auth);
+// Config routes
+configRoutes(app);
 
-app.listen(config.port, () => {
-  console.log(`status: ${config.status}, server started at port: ${config.port}`);
+app.listen(configEnv.port, () => {
+  console.log(
+    `Server status: ${configEnv.status} & running on port: ${configEnv.port}`
+  );
 });

@@ -1,10 +1,10 @@
-import express from 'express'
-import path from 'path'
+import express from "express";
+import path from "path";
 
-const router = express.Router()
+const router = express.Router();
 
 router.get("/", (req: express.Request, res: express.Response) => {
-  res.sendFile(path.join(__dirname, "../../dist/views/index.html"));
+  res.sendFile(path.join(__dirname, "../../dist/public/views/index.html"));
 });
 
-export default router
+export default router;

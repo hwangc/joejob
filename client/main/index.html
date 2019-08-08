@@ -1,59 +1,67 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1 ,user-scalable=no"
+    />
+    <meta name="description" content="jeojob과 함께 패션리더가 되어보세요" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jeojob" />
+    <meta property="og:description" content="Jeojob Fitting Room" />
+    <meta property="og:url" content="https://jeojob.com" />
+    <meta property="og:site_name" content="Jeojob" />
+    <title>Jeojob</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/default.css" rel="stylesheet" />
+    <link href="./css/common.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./js/default.js"></script>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1 ,user-scalable=no">
-  <meta name="description" content="jeojob과 함께 패션리더가 되어보세요" />
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Jeojob">
-  <meta property="og:description" content="Jeojob Fitting Room">
-  <meta property="og:url" content="https://jeojob.com">
-  <meta property="og:site_name" content="Jeojob">
-  <title>Jeojob</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <link href="./css/default.css" rel="stylesheet" />
-  <link href="./css/common.css" rel="stylesheet" />
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="./js/default.js"></script>
-</head>
-
-<body>
-  <header>
-    <h1>jeojob <img src="./images/layout/logo.jpg" alt="jeojob" class="logo"></h1>
-    <nav>
-      <ul>
-        <li class="selected">workspace</li>
-        <li>shop</li>
-      </ul>
-    </nav>
-    <div class="user-nav">
-      <div class="current-title"><span class="profile-img"></span>admin</div>
-      <ul>
-        <li><a href="">my page</a></li>
-        <li><a href="">logout</a></li>
-      </ul>
-    </div>
-  </header>
-  <section class="contents">
-    <div class="fitting-room">
-      <div class="user-img">
-        Click to add a image
+  <body>
+    <header>
+      <h1>
+        jeojob <img src="./images/layout/logo.jpg" alt="jeojob" class="logo" />
+      </h1>
+      <nav>
+        <ul>
+          <li class="selected">workspace</li>
+          <li>shop</li>
+        </ul>
+      </nav>
+      <div class="user-nav">
+        <div class="current-title"><span class="profile-img"></span>admin</div>
+        <ul>
+          <li><a href="/mypage">my page</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/logout">logout</a></li>
+        </ul>
       </div>
-      <div class="btn-area">
-        <button type="button">copy</button>
-        <button type="button">save</button>
-        <button type="button" class="share">share
-          <ul class="sns">
-            <li>kakaotalk</li>
-            <li>facebook</li>
-          </ul>
-        </button>
+    </header>
+    <section class="contents">
+      <div class="fitting-room">
+        <div class="user-img">
+          Click to add a image
+        </div>
+        <div class="btn-area">
+          <button type="button">copy</button>
+          <button type="button">save</button>
+          <button type="button" class="share">
+            share
+            <ul class="sns">
+              <li>kakaotalk</li>
+              <li>facebook</li>
+            </ul>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="workspace"></div>
-  </section>
-</body>
-
+      <div class="workspace"></div>
+    </section>
+  </body>
 </html>

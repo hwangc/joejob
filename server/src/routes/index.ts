@@ -1,8 +1,14 @@
-import express from 'express'
-import homeRoute from './home'
+import express from "express";
+import homeRoute from "./home";
+import loginRoute from "./login";
+import logoutRoute from "./logout";
+import mypageRoute from "./mypage";
 
-const registerRoutes = (app: express.Application) => {
-  app.use('/', homeRoute)
-}
+const configRoutes = (app: express.Application) => {
+  app.use("/", homeRoute);
+  app.use("/login", loginRoute);
+  app.use("/mypage", mypageRoute);
+  app.use("/logout", logoutRoute);
+};
 
-export default registerRoutes
+export default configRoutes;

@@ -4,7 +4,15 @@
   "description": "Online Fashion Network",
   "main": "server/dist/index.js",
   "scripts": {
+    "clean": "rimraf server/dist/*",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "parcel": "parcel build client/main/*.html -d server/dist/public/views",
+    "prebuild": "npm-run-all clean lint parcel",
+    "build": "tsc",
+    "start": "node .",
+    "dev:start": "npm-run-all build start",
+    "nodemon": "nodemon --watch client --watch server/src -e ts,html --exec npm run dev:start",
+    "dev": "ts-node-dev --respawn --transpileOnly server/src/index.ts",
     "test": "echo 'test not yet ready'"
   },
   "repository": {
@@ -22,7 +30,16 @@
     "url": "https://github.com/hwangc/joejob/issues"
   },
   "homepage": "https://github.com/hwangc/joejob#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  },
   "devDependencies": {
-    "parcel-bundler": "^1.12.3"
+    "@types/dotenv": "^6.1.1",
+    "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.3",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   }
 }
