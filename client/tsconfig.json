@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "noImplicitAny": true,
+    "allowJs": true,
+    "target": "es5",
+    "strict": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "outDir": "../server/dist/public/js",
+    "sourceMap": true
+  },
+  "include": [
+    "main/**/*"
+  ]
+}

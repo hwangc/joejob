@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import express from "express";
 import registerRoutes from './routes'
 import configApp from './config/express'
