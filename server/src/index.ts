@@ -1,18 +1,16 @@
-import path from 'path'
+import dotenv from "dotenv";
 import express from "express";
-import dotenv from 'dotenv'
+import registerRoutes from './routes'
+import configApp from './config/express'
+import * as config from './config'
 
-dotenv.config()
-const status = process.env.NODE_ENV
 const app: express.Application = express();
-const port: string | number = process.env.SERVER_PORT || 4040
 
-app.use(express.static(path.join(__dirname, '../dist/views')))
+// Config App
+configApp(app)
+// Register routes
+registerRoutes(app)
 
-app.get("/", (req: express.Request, res: express.Response) => {
-  res.sendFile(path.join(__dirname, '../dist/views/index.html'))
-});
-
-app.listen(port, () => {
-  console.log(`status: ${status}, server started at port: ${port}`);
+app.listen(config.port, () => {
+  console.log(`status: ${config.status}, server started at port: ${config.port}`);
 });

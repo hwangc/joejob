@@ -4,6 +4,7 @@
   "description": "Online Fashion Network",
   "main": "server/dist/index.js",
   "scripts": {
+    "parcel": "parcel build client/main/*.html -d server/dist/public/views",
     "test": "echo 'test not yet ready'"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/hwangc/joejob/issues"
   },
-  "homepage": "https://github.com/hwangc/joejob#readme"
+  "homepage": "https://github.com/hwangc/joejob#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
 }
