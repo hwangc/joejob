@@ -1,25 +1,39 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import fakeUser, { User } from "../model/user";
+import pgPromise from "pg-promise";
+import { User } from "../model/user";
 
-const configAuth = (auth: passport.PassportStatic) => {
+const configDB = {
+  host: process.env.PGHOST || "localhost",
+  database: process.env.PGDATABASE || "joejob",
+  port: parseInt(process.env.PGPORT || "5432", 10),
+  user: process.env.PGUSER || "joejob"
+};
+const pgp = pgPromise();
+const db = pgp(configDB);
+const configAuth = async (auth: passport.PassportStatic) => {
   auth.use(
     new LocalStrategy(
       {
         usernameField: "email",
         passwordField: "passwd"
       },
-      (email, passwd, done) => {
+      async (email, passwd, done) => {
+        const user = await db.one(
+          `SELECT * FROM jj_users WHERE email = $[email] and password = $[passwd]`,
+          { email, passwd }
+        );
+        // console.log("::: user :::", user);
         // Get user info from model and compare it with the user input
-        if (email !== fakeUser.email) {
+        if (email !== user.email) {
           return done(null, false, { message: "Incorrect user email" });
         }
 
-        if (passwd !== fakeUser.passwd) {
+        if (passwd !== user.password) {
           return done(null, false, { message: "Incorrect password" });
         }
 
-        return done(null, fakeUser);
+        return done(null, user);
       }
     )
   );
@@ -27,10 +41,13 @@ const configAuth = (auth: passport.PassportStatic) => {
     console.log("::: serialize :::");
     done(null, user.id);
   });
-  auth.deserializeUser((id, done) => {
+  auth.deserializeUser(async (id, done) => {
     console.log("::: deserialize :::");
-    if (fakeUser.id === id) {
-      done(null, fakeUser);
+    const user = await db.one(`SELECT * FROM jj_users WHERE id = $[id]`, {
+      id
+    });
+    if (id === user.id) {
+      done(null, user);
     } else {
       done(new Error("Failed deserialize the user"));
     }
