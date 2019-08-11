@@ -7,6 +7,9 @@ import path from "path";
 import * as configEnv from "./env";
 
 const configApp = (app: express.Application) => {
+  // Set template engine
+  app.set("view engine", "ejs");
+  app.set("views", path.join(__dirname, "../views"));
   // public static path
   app.use(express.static(path.join(__dirname, "../../dist/public/views")));
   // config express to parse incoming JSON data

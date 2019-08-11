@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import faker from "faker/locale/ko";
 import { Client } from "pg";
-import faces from "./faceDataUri";
+import faces from "./rawData/faceDataUri";
 
 const initUser = async () => {
   // Faker seed

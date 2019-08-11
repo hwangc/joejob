@@ -1,16 +1,7 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import pgPromise from "pg-promise";
-import { User } from "../model/user";
+import User from "../model/user";
 
-const configDB = {
-  host: process.env.PGHOST || "localhost",
-  database: process.env.PGDATABASE || "joejob",
-  port: parseInt(process.env.PGPORT || "5432", 10),
-  user: process.env.PGUSER || "joejob"
-};
-const pgp = pgPromise();
-const db = pgp(configDB);
 const configAuth = async (auth: passport.PassportStatic) => {
   auth.use(
     new LocalStrategy(
@@ -19,11 +10,7 @@ const configAuth = async (auth: passport.PassportStatic) => {
         passwordField: "passwd"
       },
       async (email, passwd, done) => {
-        const user = await db.one(
-          `SELECT * FROM jj_users WHERE email = $[email] and password = $[passwd]`,
-          { email, passwd }
-        );
-        // console.log("::: user :::", user);
+        const user = await User.getByEmailPasswd(email, passwd);
         // Get user info from model and compare it with the user input
         if (email !== user.email) {
           return done(null, false, { message: "Incorrect user email" });
@@ -37,15 +24,13 @@ const configAuth = async (auth: passport.PassportStatic) => {
       }
     )
   );
-  auth.serializeUser((user: User, done) => {
+  auth.serializeUser((user: any, done) => {
     console.log("::: serialize :::");
     done(null, user.id);
   });
   auth.deserializeUser(async (id, done) => {
     console.log("::: deserialize :::");
-    const user = await db.one(`SELECT * FROM jj_users WHERE id = $[id]`, {
-      id
-    });
+    const user = await User.getById(id);
     if (id === user.id) {
       done(null, user);
     } else {
