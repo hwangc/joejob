@@ -195,6 +195,10 @@ header .user-nav ul li a {
   background-size: 24px;
 }
 
+.fitting-room .user-img img {
+	vertical-align: top;
+}
+
 .fitting-room .btn-area {
   position: absolute;
   bottom: 0;

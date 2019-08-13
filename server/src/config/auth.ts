@@ -10,17 +10,24 @@ const configAuth = async (auth: passport.PassportStatic) => {
         passwordField: "passwd"
       },
       async (email, passwd, done) => {
-        const user = await User.getByEmailPasswd(email, passwd);
-        // Get user info from model and compare it with the user input
-        if (email !== user.email) {
-          return done(null, false, { message: "Incorrect user email" });
-        }
+        try {
+          const user = await User.getByEmailPasswd(email, passwd);
+          // console.log("::: login user :::", user.email,email);
+          
+          // Get user info from model and compare it with the user input
+          if (email !== user.email) {
+            return done(null, false, { message: "Incorrect user email" });
+          }
 
-        if (passwd !== user.password) {
-          return done(null, false, { message: "Incorrect password" });
-        }
+          if (passwd !== user.password) {
+            return done(null, false, { message: "Incorrect password" });
+          }
 
-        return done(null, user);
+          return done(null, user);
+        } catch (error) {
+          console.log("::: Auth promise error ", error);
+          return done(null, false, { message: "Who are you?" })
+        }
       }
     )
   );
@@ -34,7 +41,7 @@ const configAuth = async (auth: passport.PassportStatic) => {
     if (id === user.id) {
       done(null, user);
     } else {
-      done(new Error("Failed deserialize the user"));
+      done(null, false);
     }
   });
 };

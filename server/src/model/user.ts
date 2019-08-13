@@ -35,11 +35,14 @@ class User {
     this.db = db;
   }
 
-  public async getByEmailPasswd(email: string, passwd: string) {
-    return await this.db.one(sql.userByEmailPasswd, { email, passwd });
+  public async getByEmailPasswd(email: string, password: string) {
+    return await this.db.one(sql.userByEmailPasswd, { email, password });
   }
   public async getById(id: any) {
     return await this.db.one(sql.userById, { id });
+  }
+  public async addUser(email: string, password: string, username: string, age?: number, height?: number, weight?: number, mobile_number?: number) {
+    return await this.db.one(sql.addUser, {email, password, username, age, height, weight, mobile_number})
   }
 }
 

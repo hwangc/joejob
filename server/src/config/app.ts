@@ -11,7 +11,7 @@ const configApp = (app: express.Application) => {
   app.set("view engine", "ejs");
   app.set("views", path.join(__dirname, "../views"));
   // public static path
-  app.use(express.static(path.join(__dirname, "../../dist/public/views")));
+  app.use(express.static(path.join(__dirname, "../views")));
   // config express to parse incoming JSON data
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));

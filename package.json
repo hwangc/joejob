@@ -4,6 +4,7 @@
   "description": "Online Fashion Network",
   "main": "server/dist/index.js",
   "scripts": {
+    "postinstall": "cd server && npm install",
     "init:db": "ts-node server/tools/initdb",
     "init:user": "ts-node server/tools/initUsers",
     "clean": "rimraf server/dist/*",
@@ -43,7 +44,6 @@
     "nodemon": "^1.19.1",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
-    "pug": "^2.0.4",
     "ts-node-dev": "^1.0.0-pre.40",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"

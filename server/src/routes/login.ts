@@ -1,21 +1,21 @@
 import express from "express";
 import passport from "passport";
-import path from "path";
 import * as authChecker from "../middlewares/authChecker";
 
 const router = express.Router();
 
-router.use((req, res, next) =>
-  authChecker.isNotAuthenticated(req, res, next, "/mypage")
+router.use((req: express.Request, res: express.Response, next:express.NextFunction) =>
+  authChecker.isNotAuthenticated(req, res, next, "/")
 );
 router.get("/", (req: express.Request, res: express.Response) => {
-  res.sendFile(path.join(__dirname, "../../dist/public/views/login.html"));
+  res.render("login",{message:req.flash('error')})
+  // res.sendFile(path.join(__dirname, "../../dist/public/views/login.html"));
 });
 
 router.post(
   "/",
   passport.authenticate("local", {
-    successRedirect: "mypage",
+    successRedirect: "/",
     failureRedirect: "login",
     failureFlash: true
   }),

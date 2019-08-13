@@ -18,10 +18,10 @@
       href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap"
       rel="stylesheet"
     />
-    <link href="/default.1fd839c6.css" rel="stylesheet" />
-    <link href="/common.c952e93a.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="/default.c2141cba.js"></script>
+    <script type="text/javascript" src="js/default.js"></script>
   </head>
 
   <body>
@@ -38,16 +38,23 @@
       <div class="user-nav">
         <div class="current-title"><span class="profile-img"></span>admin</div>
         <ul>
-          <li><a href="/mypage">my page</a></li>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/logout">logout</a></li>
+          <li><a href="/mypage">My page</a></li>
+          <%if (!login) { %>
+            <li><a href="/login">Login</a></li>
+          <% } else {%>
+            <li><a href="/logout">Logout</a></li>
+          <% }%>
         </ul>
       </div>
     </header>
     <section class="contents">
       <div class="fitting-room">
         <div class="user-img">
-          <img src="<%= profile_photo %>" />
+          <%if (profile_photo) { %>
+            <img src="<%= profile_photo %>" />
+          <% } else {%>
+            Click to add a image
+          <% }%>
         </div>
         <div class="btn-area">
           <button type="button">copy</button>
