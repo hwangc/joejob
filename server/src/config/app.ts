@@ -20,6 +20,7 @@ const configApp = (app: express.Application) => {
   app.use(cookieParser());
   app.use(
     session({
+      name: 'joejob.sid',
       secret: configEnv.sessionSecret,
       resave: false,
       cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 },

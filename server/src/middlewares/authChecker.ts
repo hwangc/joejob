@@ -1,6 +1,6 @@
 import express from "express";
 
-const isAuthenticated = (
+const redirectIfNotAuthenticated = (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction,
@@ -18,7 +18,7 @@ const isAuthenticated = (
   }
 };
 
-const isNotAuthenticated = (
+const redirectIfAuthenticated = (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction,
@@ -36,4 +36,4 @@ const isNotAuthenticated = (
     return next();
   }
 };
-export { isAuthenticated, isNotAuthenticated };
+export { redirectIfNotAuthenticated, redirectIfAuthenticated };
